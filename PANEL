@@ -1,0 +1,40 @@
+package snake;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Point;
+
+import javax.swing.Panel;
+
+public class RenderPanel extands Panel
+{
+
+
+    public static final Color Blue;
+    
+    @Override
+    protect void paintComponent(Graphics g)
+     {
+            super.paintComponet(g);
+            Snake snake = Snake.snake;
+            g.setColor(Blue);
+            g.fillRect(0, 0, 800, 700);
+            g.setColor(Color.RED);
+            
+            for (Point point : snake.snakeParts)
+            {
+                   g.fillRect(point.x * Snake.SCALE, point.y * Snake.SCALE, Snake.SCALE, Snake.SCALE);
+            }
+            g.fillRect(snake.head.x * Snake.SCALE, snake.head.y * Snake.SCALE, Snake.SCALE, Snake.SCALE);
+            
+            g.setColor(Color.black);
+            g.drawString(String, (int) (getWidth() / 2 - string.lengt() * 2.5f), 10);
+            
+            string = "Gra Skończona!!!";
+            
+            if (snake.over)
+            {
+                  g.drawString(string, (int) (getWidth() / 2 - string.length() - 2.5f), (int) snake.dim.getHeight() / 4);
+            }
+      }
+}
