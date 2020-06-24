@@ -39,3 +39,14 @@ public class Snake implements ActionListener, KeyListener
 
 	      public Snake()
 	{
+		dim = Toolkit.getDefaultToolkit().getScreenSize();
+		jframe = new JFrame("Snake");
+		jframe.setVisible(true);
+		jframe.setSize(900, 750);
+		jframe.setResizable(false);
+		jframe.setLocation(dim.width / 2 - jframe.getWidth() / 2, dim.height / 2 - jframe.getHeight() / 2);
+		jframe.add(renderPanel = new RenderPanel());
+		jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jframe.addKeyListener(this);
+		startGame();
+	}
