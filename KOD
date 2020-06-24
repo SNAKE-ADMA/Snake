@@ -73,13 +73,13 @@ public class Snake implements ActionListener, KeyListener
 	{
 		renderPanel.repaint();
 		ticks++;
-
+		
 		if (ticks % 2 == 0 && head != null && !over && !paused)
 		{
 			time++;
-
+			
 			snakeParts.add(new Point(head.x, head.y));
-
+			
 			if (direction == UP)
 			{
 				if (head.y - 1 >= 0 && noTailAt(head.x, head.y - 1))
@@ -89,10 +89,10 @@ public class Snake implements ActionListener, KeyListener
 				else
 				{
 					over = true;
-
+					
 				}
 			}
-
+			
 			if (direction == DOWN)
 			{
 				if (head.y + 1 < 67 && noTailAt(head.x, head.y + 1))
@@ -104,7 +104,7 @@ public class Snake implements ActionListener, KeyListener
 					over = true;
 				}
 			}
-
+			
 			if (direction == LEFT)
 			{
 				if (head.x - 1 >= 0 && noTailAt(head.x - 1, head.y))
@@ -116,7 +116,7 @@ public class Snake implements ActionListener, KeyListener
 					over = true;
 				}
 			}
-
+			
 			if (direction == RIGHT)
 			{
 				if (head.x + 1 < 80 && noTailAt(head.x + 1, head.y))
@@ -128,13 +128,13 @@ public class Snake implements ActionListener, KeyListener
 					over = true;
 				}
 			}
-
+			
 			if (snakeParts.size() > tailLength)
 			{
 				snakeParts.remove(0);
-
+				
 			}
-
+			
 			if (cherry != null)
 			{
 				if (head.equals(cherry))
@@ -145,4 +145,21 @@ public class Snake implements ActionListener, KeyListener
 				}
 			}
 		}
+	}
+	
+	public boolean noTailAt(int x, int y)
+	{
+		for (Point point : snakeParts)
+		{
+			if (point.equals(new Point(x, y)))
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public static void main(String[] args)
+	{
+		snake = new Snake();
 	}
