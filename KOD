@@ -52,3 +52,18 @@ public class Snake implements ActionListener, KeyListener
 		jframe.addKeyListener(this);
 		startGame();
 	}
+	public void startGame()
+	{
+		over = false;
+		paused = false;
+		time = 0;
+		score = 0;
+		tailLength = 14;
+		ticks = 0;
+		direction = DOWN;
+		head = new Point(0, -1);
+		random = new Random();
+		snakeParts.clear();
+		cherry = new Point(random.nextInt(79), random.nextInt(66));
+		timer.start();
+	}
