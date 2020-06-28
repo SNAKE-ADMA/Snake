@@ -9,17 +9,18 @@ import javax.swing.Panel;
 public class RenderPanel extands Panel
 {
 
-
-    public static final Color Blue;
+	public static final Color GREY = new Color(16113331);
+	public static final Color GREEN = new Color(39219);
+	public static final Color BLACK = new Color(000000);
     
     @Override
     protect void paintComponent(Graphics g)
      {
             super.paintComponet(g);
             Snake snake = Snake.snake;
-            g.setColor(Blue);
+            g.setColor(GREY);
             g.fillRect(0, 0, 800, 700);
-            g.setColor(Color.RED);
+            g.setColor(GREEN);
             
             for (Point point : snake.snakeParts)
             {
@@ -27,7 +28,14 @@ public class RenderPanel extands Panel
             }
             g.fillRect(snake.head.x * Snake.SCALE, snake.head.y * Snake.SCALE, Snake.SCALE, Snake.SCALE);
             
-            g.setColor(Color.black);
+            g.setColor(Color.RED);
+            
+            g.fillRect(snake.cherry.x * Snake.SCALE, snake.cherry.y * Snake.SCALE, Snake.SCALE, Snake.SCALE);
+            
+            String string = "Punkty: " + snake.score + ", Długość: " + snake.tailLength + ", Czas   : " + snake.time / 20;
+            
+		    g.setColor(BLACK);            
+
             g.drawString(String, (int) (getWidth() / 2 - string.lengt() * 2.5f), 10);
             
             string = "Gra Skończona!!!";
@@ -35,6 +43,13 @@ public class RenderPanel extands Panel
             if (snake.over)
             {
                   g.drawString(string, (int) (getWidth() / 2 - string.length() - 2.5f), (int) snake.dim.getHeight() / 4);
+            }
+            
+            string = "Pauza!";
+
+            if (snake.paused && !snake.over)
+            {
+                g.drawString(string, (int) (getWidth() / 2 - string.length() * 2.5f), (int) snake.dim.getHeight() / 4);
             }
       }
 }

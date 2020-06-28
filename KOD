@@ -12,7 +12,7 @@ import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 /**
-*  Arian Szywała  Marek  Mamot
+*  Adrian Szywała  Marek  Mamot
 */
 
 public class Snake implements ActionListener, KeyListener
@@ -23,13 +23,13 @@ public class Snake implements ActionListener, KeyListener
 	      
 	      public RenderPanel renderPanel;
 	      
-	      public Timer timer = new Timer(25, this);
+	      public Timer timer = new Timer(40, this);
 	      
 	      public ArrayList<Point> snakeParts = new ArrayList<Point>();
 	      
-	      public static final int UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3, SCALE = 12;
+	      public static final int UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3, SCALE = 10;
 	      
-      	public int ticks = 0, direction = DOWN, score, tailLength = 12, time;
+      	public int ticks = 0, direction = DOWN, score, tailLength = 10, time;
 	
 	      public Point head, cherry;
 	      
@@ -44,7 +44,7 @@ public class Snake implements ActionListener, KeyListener
 		dim = Toolkit.getDefaultToolkit().getScreenSize();
 		jframe = new JFrame("Snake");
 		jframe.setVisible(true);
-		jframe.setSize(900, 750);
+		jframe.setSize(800, 700);
 		jframe.setResizable(false);
 		jframe.setLocation(dim.width / 2 - jframe.getWidth() / 2, dim.height / 2 - jframe.getHeight() / 2);
 		jframe.add(renderPanel = new RenderPanel());
@@ -64,7 +64,7 @@ public class Snake implements ActionListener, KeyListener
 		head = new Point(0, -1);
 		random = new Random();
 		snakeParts.clear();
-		cherry = new Point(random.nextInt(79), random.nextInt(66));
+		cherry = new Point(random.nextInt(78), random.nextInt(66));
 		timer.start();
 	}
 	
